@@ -1,56 +1,14 @@
-.App {
-    display: flex;
-    justify-content: center;
-    text-align: left;
-    background-color: #ccd8e4;
-    height: 100vh;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.todo-list {
-    width: 40%;
-    height: fit-content;
-    background-color: #ffffff;
-    padding: 1.5rem;
-    margin-top: 5rem;
-    ;
-    border-radius: 10px 10px 10px 10px;
-}
-
-.title {
-    text-align: start;
-}
-
-.UI {
-    display: flex;
-    flex-direction: Column;
-    width: 100%;
-    height: fit-content;
-}
-
-.tasks {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    gap: 1rem;
-}
-
-.task {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 75%;
-    background-color: #e0ebff;
-    border-radius: 10px 10px 10px 10px;
-}
-
-p {
-    padding: 0.5rem;
-}
-
-.date {
-    display: flex;
-    flex-direction: column;
-    width: 20%;
-    background-color: #e0ebff;
-    border-radius: 10px 10px 10px 10px;
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }

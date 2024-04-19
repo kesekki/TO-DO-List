@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import Nav from './components/Nav';
-import './components/Todo.css';
+import './Todo.css';
+
 
 function Task({ task, index, completeTask, removeTask }) {
     return (
         <div className="task" style={{ textDecoration: task.completed ? "line-through" : "" }}>
-        <input className='typing-container'
-          placeholder=' type here '/>
-            
-        <button style={{ background: "red" }} onClick={() => removeTask(index)}>x</button>
-        <button  onClick={() => completeTask(index)}>Complete</button>
-        <button onClick={() => editTask(index)}>edit</button>
+            {task.title}
+            <button style={{ background: "red" }} onClick={() => removeTask(index)}>x</button>
+            <button onClick={() => completeTask(index)}>Complete</button>
         </div>
     );
 }
@@ -37,11 +34,21 @@ function CreateTask({ addTask }) {
     );
 }
 
-function App() {
-  
+function Todo() {
     const [tasksRemaining, setTasksRemaining] = useState(0);
     const [tasks, setTasks] = useState([
-    
+        {
+            title: "Grab some Pizza",
+            completed: true
+        },
+        {
+            title: "Do your workout",
+            completed: true
+        },
+        {
+            title: "Hangout with friends",
+            completed: false
+        }
     ]);
 
     useEffect(() => { setTasksRemaining(tasks.filter(task => !task.completed).length) });
@@ -65,8 +72,6 @@ function App() {
     };
 
     return (
-        <div className="">
-            <Nav/>
         <div className="todo-container">
             <div className="header">Pending tasks ({tasksRemaining})</div>
             <div className="tasks">
@@ -83,10 +88,8 @@ function App() {
             <div className="create-task" >
                 <CreateTask addTask={addTask} />
             </div>
-        
-            </div>
         </div>
     );
 }
 
-export default App;
+export default Todo;
