@@ -14,13 +14,13 @@ export default function Nav() {
     return (
       <nav>
             <div className="name">
-              TO-DO List
+              <p>TO-DO List</p>
             </div>
             <div className="time">
                 {ctime}
             </div>
             <div className="date">    
-              Date: 
+                <p>Date: {cdate}</p>
             </div>
         </nav>
     )

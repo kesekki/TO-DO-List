@@ -4,9 +4,10 @@ nav{
     justify-content:space-between;
     align-items: center;
     padding: 10px;
+    text-align: center;
 }
 .name{
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
     background-color:  #ffffff;
     padding: 5px;
@@ -15,6 +16,7 @@ nav{
 .name:hover{
     background-color: #ccd8e4;
     border-radius: 5px;
+    font-weight: bold;
 }
 
 .time{
@@ -25,4 +27,21 @@ nav{
 .time:hover{
     background-color: #ccd8e4;
     border-radius: 5px;
+}
+
+.date{
+    padding: 5px;
+    user-select: none;
+}
+
+.date:hover{
+    background-color: #ccd8e4;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 700px) {
+    nav{
+        width: 105%;
+        justify-content: space-around;
+    }
 }

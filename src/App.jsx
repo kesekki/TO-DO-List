@@ -1,56 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import CreateTask from './components/Create_task';
 import Nav from './components/Nav';
+import Task from './components/Task';
 import './components/Todo.css';
-
-function Task({ task, index, completeTask, removeTask }) {
-    return (
-        <div className="task" style={{ textDecoration: task.completed ? "line-through" : "" }}>
-        <input className='typing-container'
-          placeholder=' type here '/>
-            
-        <button style={{ background: "red" }} onClick={() => removeTask(index)}>x</button>
-        <button  onClick={() => completeTask(index)}>Complete</button>
-        <button onClick={() => editTask(index)}>edit</button>
-        </div>
-    );
-}
-
-function CreateTask({ addTask }) {
-    const [value, setValue] = useState("");
-
-    const handleSubmit = e => {
-        e.preventDefault();
-        if (!value) return;
-        addTask(value);
-        setValue("");
-    }
-    return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                className="input"
-                value={value}
-                placeholder="Add a new task"
-                onChange={e => setValue(e.target.value)}
-            />
-        </form>
-    );
-}
 
 function App() {
   
     const [tasksRemaining, setTasksRemaining] = useState(0);
-    const [tasks, setTasks] = useState([
-    
-    ]);
-
+    const [tasks, setTasks] = useState([]);
     useEffect(() => { setTasksRemaining(tasks.filter(task => !task.completed).length) });
 
 
-    const addTask = title => {
-        const newTasks = [...tasks, { title, completed: false }];
-        setTasks(newTasks);
-    };
+    const addTask = (title, time) => {
+    const newTasks = [...tasks, { title, completed: false, time }];
+    setTasks(newTasks);
+};
 
     const completeTask = index => {
         const newTasks = [...tasks];
@@ -65,27 +29,30 @@ function App() {
     };
 
     return (
-        <div className="">
+         <div className="App">
             <Nav/>
-        <div className="todo-container">
-            <div className="header">Pending tasks ({tasksRemaining})</div>
-            <div className="tasks">
-                {tasks.map((task, index) => (
-                    <Task
-                    task={task}
-                    index={index}
-                    completeTask={completeTask}
-                    removeTask={removeTask}
-                    key={index}
-                    />
-                ))}
-            </div>
-            <div className="create-task" >
-                <CreateTask addTask={addTask} />
-            </div>
-        
-            </div>
-        </div>
+          <div className="todo-container">
+              <div className="title">Pending tasks ({tasksRemaining})</div>
+                    <div className="create-input">
+                        <CreateTask addTask={addTask} />
+                    </div>
+                
+                <div className="tasks">
+                  {tasks.map((task, index) => (
+                      <Task
+                      task={task}
+                      index={index}
+                      completeTask={completeTask}
+                      removeTask={removeTask}
+                      key={index}
+                      time={index}
+                      countTasks={tasks.filter(task => !task.isCompleted).length}
+                      setTasksRemaining={setTasksRemaining}
+                      />
+                  ))}
+                  </div>
+              </div>
+          </div>
     );
 }
 
